@@ -1,11 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Sophie Bluel - Architecte d'intérieur</title>
+	<title>Connexion | Sophie Bluel - Architecte d'intérieur</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./assets/css/login.css">
+    <script src="./assets/login.js" defer></script>
 </head>
 <body>
-    
+    <header>
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li>projets</li>
+				<li>contact</li>
+				<li id="loginUl">login</li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</header>
+	<main id="container">
+		<section id="loginDiv" class="form">
+			<h2>Log In</h2>
+			<form id="form" class="formDiv">
+				<div id="error_message" class="error_message"></div>
+				<p>E-mail</p>
+				<input id="email" type="email">
+				<p>Mot de passe</p>
+				<input id="password" type="password">
+                <input type="submit" id="submitButton" value="Se connecter">
+            </form>
+		</section>
+    </main>
+    <footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
 </body>
 </html>
