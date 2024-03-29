@@ -13,10 +13,45 @@
 	<script src="./assets/app.js" defer></script>
 </head>
 <body id="body">
-	<!-- <div class="editor-mode" id="editor-mode">
-		<i class="fa-regular fa-pen-to-square"></i>
-		<p>Mode édition</p>
-	</div> -->
+	<div id="adminModale" class="adminGallery">
+		<div id="adminEditModal" class="adminEditModal">
+			<i id="closeIcon" class="fa-solid fa-xmark closeIcon"></i>
+			<p class="titleGalleryPhoto">Galerie Photo</p>
+			<div id="GalleryEdit"></div>
+			<p id="adminAddPicture" class="AddPicture">Ajouter une photo</p>
+		</div>
+		<div id="adminAddModal" class="adminAddModal">
+			<form id="ModaleForm">
+				<div class="icons">
+					<i id="returnIcon" class="fa-solid fa-arrow-left"></i>
+					<i id="closeIcon2" class="fa-solid fa-xmark"></i>
+				</div>
+				<p class="titleAddPicture">Ajout photo</p>
+				<div class="adminAddPicture2">
+					<div class="formImage" id="formImage">
+						<i class="fa-regular fa-image"></i>
+						<label class="LabelFileUpload" for="adminFileUpload">+ Ajouter photo</label>
+						<input type="file" id="adminFileUpload" hidden>
+						<p>jpg, png : 4mo max</p>
+					</div>
+					<div id="adminModalpreview" class="previewAdminModal">
+						<img id="imageModale" src="" alt="">
+					</div>
+				</div>
+				<div class="adminModalRequest">
+					<p>Titre</p>
+					<input id="adminModaleTitle" class="adminModalInput" type="text">
+					<p class="adminModalCat">Catégorie</p>
+					<select class="adminModalChoice adminModalInput" name="categorie" id="choiceModalAdd" class="js-categoryId">
+						<option class="adminModalChoiceEmpty" value="0"></option>
+					</select>
+					<i for="choiceModalAdd" class="fa-solid fa-chevron-down"></i>
+					<p id="error_validateModal" class="error_validateModal">Veuillez renseignez tout les champs précédents.</p>
+				</div>
+				<input id="adminModalSubmit" value="Valider" type="submit">
+			</form>
+		</div>
+	</div>
 	<div class="container">
 		<header>
 			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
