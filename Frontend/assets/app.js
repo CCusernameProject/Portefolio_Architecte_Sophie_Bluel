@@ -133,13 +133,11 @@ const removeProjet = (parent, galleryi) => {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}`},
         })
-        .then (response => {
-            if (response.status === 204) {
-                console.log("DEBUG SUPPRESION DU PROJET " + galleryi.id)
+        .then (res => {
+            if (res.status === 204) {
                 refreshContent(Gallery, "Text Accepted")
                 refreshContent(Gallery2, "Icon Accepted")
-            } else if (response.status === 401) { // Token inorrect //
-                alert("Vous n'êtes pas autorisé à supprimer ce projet, merci de vous connecter avec un compte valide")
+            } else if (res.status === 401) { // Token inorrect //
                 window.location.href = "login.html";
             }
         })
@@ -258,7 +256,6 @@ Promise.all([apiWork, apiCategory])
             }
             EditorModeButton.addEventListener('click', () => {
                     spawnModifiedBox('flex')
-                    console.log(Gallery.childElementCount)
                     if(!alreadyClickedOnModified) {
                         createGallery(data1, Gallery2, "Icon Accepted")
                         alreadyClickedOnModified = true
