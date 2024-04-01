@@ -449,6 +449,7 @@ input[type="submit"]:hover{
 }
 
 .formImage {
+	z-index: 999;
 	height: 169px;
 	display: flex;
 	flex-direction: column;
@@ -472,7 +473,7 @@ input[type="submit"]:hover{
 }
 
 .previewAdminModal img {
-	display: none;
+	opacity: 0;
 	width: 129px;
 }
 

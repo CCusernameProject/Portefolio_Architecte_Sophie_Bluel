@@ -31,6 +31,7 @@ const errorAddModal = document.getElementById('error_validateModal');
 const adminModaleTitle = document.getElementById('adminModaleTitle');
 const adminModaleCategory = document.getElementById('choiceModalAdd');
 const formImage = document.getElementById('formImage');
+const LabelFileUpload = document.getElementById('LabelFileUpload');
 const adminModalpreview = document.getElementById('adminModalpreview');
 const adminFileUpload = document.getElementById('adminFileUpload');
 const imageModale = document.getElementById('imageModale');
@@ -188,8 +189,10 @@ const affichageImg = () => {
     adminFileUpload.addEventListener('change', function() {
         let file = this.files[0];
         if (file) {
-            formImage.style.display = 'none'
-            imageModale.style.display = 'block'
+            formImage.style.opacity = 0
+            LabelFileUpload.style.position = 'absolute'
+            LabelFileUpload.style.height = '174.14px'
+            imageModale.style.opacity = 1
             let reader = new FileReader();
             reader.onload = function(event) {
                 imageModale.setAttribute('src', event.target.result);
@@ -201,8 +204,10 @@ const affichageImg = () => {
 }
 
 const deleteImage = () => {
-    imageModale.style.display = 'none'
-    formImage.style.display = 'flex'
+    imageModale.style.opacity = 0
+    LabelFileUpload.style.position = 'relative'
+    LabelFileUpload.style.height = 'auto'
+    formImage.style.opacity = 1
     ModaleForm.reset();
 }
  
