@@ -576,6 +576,14 @@ input[type="submit"]:hover{
 	background-color: #A7A7A7;
 }
 
+.btn-disable {
+	background-color: #A7A7A7;
+}
+
+.btn_enable {
+	background-color: #1D6154;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;

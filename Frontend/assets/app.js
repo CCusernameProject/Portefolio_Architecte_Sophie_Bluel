@@ -41,7 +41,7 @@ const ModaleForm = document.getElementById('ModaleForm');
 const filterList2 = []
 let alreadyClickedOnModified = false
 let token = localStorage.getItem("token");
-// Créer l'affichage des projets.
+// Create Gallery 1 or 2
 const createGallery = (data, parent, type) => {
     for (let i = 0; i < data.length; i++) {
         const figure = document.createElement('figure');
@@ -65,7 +65,7 @@ const createGallery = (data, parent, type) => {
     }
 }
 
-// Créer la liste des filtres ainsi que leurs evenements.
+// Create filter list and add event foreach
 const createFilterList = (filterList) => {
     newElementFilter('p', filterDiv, 'filterText', "Tous", "0")
     filterList2[0].classList.add('filterTextSelected')
@@ -82,7 +82,7 @@ const createFilterList = (filterList) => {
         })
     })
 }
-// Créer un nouvel élément.
+// Create filter in html
 const newElementFilter = (element, parent, classToAdd, name, id) => {
     let filterText = document.createElement(element);
     parent.appendChild(filterText)
@@ -91,7 +91,7 @@ const newElementFilter = (element, parent, classToAdd, name, id) => {
     filterText.id = id
     filterList2.push(filterText)
 }
-// Trier les éléments par filtres.
+// Filter sort
 const filterChoose = (choose) => {
     if (choose !== 0 && choose > 0) {
         for (let child of Gallery.children) {
@@ -107,7 +107,7 @@ const filterChoose = (choose) => {
     }
 }
 
-// Ajout de l'affichage du mode éditeur
+// Add editor Mode
 const editorMod = () => {
     const divEdit = document.createElement('div')
     divEdit.classList.add('editor-mode')
@@ -121,13 +121,13 @@ const editorMod = () => {
     body.insertBefore(divEdit, body.firstChild)
 }
 
-// Modification de la galerie
+// Modifie gallery
 const spawnModifiedBox = (display, height) => {
     adminModale.style.display = display
     adminModale.style.height = height
 }
 
-// Remove projet
+// Remove project
 const removeProjet = (parent, galleryi) => {
     parent.addEventListener('click', () => {
         fetch(`http://localhost:5678/api/works/${galleryi.id}`, {
@@ -148,7 +148,7 @@ const removeProjet = (parent, galleryi) => {
     })
 }
 
-// Fermeture de la modale
+// Close modale
 const closeEvent = ([parent1, parent2]) => {
     parent1.addEventListener('click', () => {
         spawnModifiedBox('none')
@@ -163,7 +163,7 @@ const closeEvent = ([parent1, parent2]) => {
     })
 }
 
-// Evenement de changement de display
+// Event to change display
 const changeDisplay = () => {
     adminAddPicture.addEventListener('click', () => {
         adminEditModal.style.display = 'none'
@@ -184,7 +184,7 @@ const changeDisplay = () => {
     })
 }
 
-// Affichage de l'image
+// Image display
 const affichageImg = () => {
     adminFileUpload.addEventListener('change', function() {
         let file = this.files[0];
@@ -239,7 +239,7 @@ adminModaleTitle.addEventListener('input', updateButtonColor)
 adminModaleCategory.addEventListener('input', updateButtonColor)
 adminFileUpload.addEventListener('input', updateButtonColor)
 
-// Récupéré les différents liens d'apis
+// Fetch apiWork and apiCategory
 Promise.all([apiWork, apiCategory])
         .then(([data1, data2]) => {
             createGallery(data1, Gallery, "Text Accepted")
@@ -260,31 +260,31 @@ Promise.all([apiWork, apiCategory])
                 EditorModeButton.style.display = 'inline'
             }
             EditorModeButton.addEventListener('click', () => {
-                    spawnModifiedBox('flex')
-                    if(!alreadyClickedOnModified) {
-                        createGallery(data1, Gallery2, "Icon Accepted")
-                        alreadyClickedOnModified = true
-                    }
-                })
-                for(let i = 0; i < data2.length; i++) {
-                    const createOptionModalC = document.createElement('option')
-                    createOptionModalC.value = data2[i].id
-                    createOptionModalC.innerHTML = data2[i].name
-                    choiceModalAdd.appendChild(createOptionModalC)
+                spawnModifiedBox('flex')
+                if(!alreadyClickedOnModified) {
+                    createGallery(data1, Gallery2, "Icon Accepted")
+                    alreadyClickedOnModified = true
                 }
-                affichageImg()
-                changeDisplay()
-                closeEvent([closeAdminModale, closeAdminModale2])
-                initOk = true
             })
+            for(let i = 0; i < data2.length; i++) {
+                const createOptionModalC = document.createElement('option')
+                createOptionModalC.value = data2[i].id
+                createOptionModalC.innerHTML = data2[i].name
+                choiceModalAdd.appendChild(createOptionModalC)
+            }
+            affichageImg()
+            changeDisplay()
+            closeEvent([closeAdminModale, closeAdminModale2])
+            initOk = true
+        })
     
     
-        // En cas d'erreur
+        // If error
         .catch(error => {
             console.log("Une erreur est survenue :", error)
         });
 
-// Ajouté un projet
+// Add a project
 ModaleForm.addEventListener('submit', async function (event) {
     event.preventDefault();
     if(adminModaleTitle.value === '' || adminModaleTitle.value === null || adminModaleCategory.value === '0' || adminFileUpload.value === '' || adminFileUpload.value === null){
