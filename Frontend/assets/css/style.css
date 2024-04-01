@@ -189,7 +189,9 @@ li:hover {
 }
 
 .gallery img {
-	width: 100%;
+	width: 366.66px;
+	height: 489.27px;
+	object-fit: cover;
 }
 
 #contact {
@@ -362,10 +364,10 @@ input[type="submit"]:hover{
 	height: 103px;
 }
 
-.adminEditModal div figure img {
-	position: absolute;
+.GalleryEdit img {
 	width: 77px;
-	max-height: 103px;
+	height: 103px;
+	object-fit: cover;
 }
 
 .adminEditModal div figure i {
@@ -475,6 +477,8 @@ input[type="submit"]:hover{
 .previewAdminModal img {
 	opacity: 0;
 	width: 129px;
+	height: 171.84px;
+	object-fit: cover;
 }
 
 .LabelFileUpload {
